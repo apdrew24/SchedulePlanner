@@ -30,81 +30,119 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+
       <div id="hour9" class="row time-block">
         <div class="col-md-1 hour">
-            9 AM
+          9 AM
         </div> 
         <textarea class="col-md-10 description">
         </textarea>
         <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-    </div>
-    <div id="hour10" class="row time-block">
-      <div class="col-md-1 hour">
+      </div>
+
+      <div id="hour10" class="row time-block">
+        <div class="col-md-1 hour">
           10 AM
-      </div> 
-      <textarea class="col-md-10 description">
-      </textarea>
-      <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-  </div>
-  <div id="hour11" class="row time-block">
-    <div class="col-md-1 hour">
-        11 AM
-    </div> 
-    <textarea class="col-md-10 description">
-    </textarea>
-    <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-</div>
-<div id="hour12" class="row time-block">
-  <div class="col-md-1 hour">
-      12 PM
-  </div> 
-  <textarea class="col-md-10 description">
-  </textarea>
-  <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-</div>
-<div id="hour13" class="row time-block">
-  <div class="col-md-1 hour">
-      1 PM
-  </div> 
-  <textarea class="col-md-10 description">
-  </textarea>
-  <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-</div>
-<div id="hour14" class="row time-block">
-  <div class="col-md-1 hour">
-      2 PM
-  </div> 
-  <textarea class="col-md-10 description">
-  </textarea>
-  <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-</div>
-<div id="hour15" class="row time-block">
-  <div class="col-md-1 hour">
-      3 PM
-  </div> 
-  <textarea class="col-md-10 description">
-  </textarea>
-  <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-</div>
-<div id="hour16" class="row time-block">
-  <div class="col-md-1 hour">
-      4 PM
-  </div> 
-  <textarea class="col-md-10 description">
-  </textarea>
-  <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-</div>
-<div id="hour17" class="row time-block">
-  <div class="col-md-1 hour">
-      5 PM
-  </div> 
-  <textarea class="col-md-10 description">
-  </textarea>
-  <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-</div>
+        </div> 
+        <textarea class="col-md-10 description">
+        </textarea>
+        <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+      </div>
+
+      <div id="hour11" class="row time-block">
+        <div class="col-md-1 hour">
+          11 AM
+        </div> 
+        <textarea class="col-md-10 description">
+        </textarea>
+        <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+      </div>
+
+      <div id="hour12" class="row time-block">
+        <div class="col-md-1 hour">
+          12 PM
+        </div> 
+        <textarea class="col-md-10 description">
+        </textarea>
+        <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+      </div>
+
+      <div id="hour13" class="row time-block">
+        <div class="col-md-1 hour">
+          1 PM
+        </div> 
+        <textarea class="col-md-10 description">
+        </textarea>
+        <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+      </div>
+
+      <div id="hour14" class="row time-block">
+        <div class="col-md-1 hour">
+          2 PM
+        </div> 
+        <textarea class="col-md-10 description">
+        </textarea>
+        <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+      </div>
+
+      <div id="hour15" class="row time-block">
+        <div class="col-md-1 hour">
+          3 PM
+        </div> 
+        <textarea class="col-md-10 description">
+        </textarea>
+        <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+      </div>
+
+      <div id="hour16" class="row time-block">
+        <div class="col-md-1 hour">
+          4 PM
+        </div> 
+        <textarea class="col-md-10 description">
+        </textarea>
+        <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+      </div>
+
+      <div id="hour17" class="row time-block">
+        <div class="col-md-1 hour">
+          5 PM
+        </div> 
+        <textarea class="col-md-10 description">
+        </textarea>
+        <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <script type="text/javascript">
+
+    var date = moment().format("MMMM Do YYYY");
+    $("#currentDay").html(date);
+
+    $(document).ready(function(){
+      
+      $(".saveBtn").on("click", function () {
+        
+        var textEl = $(this).siblings(".description").val();
+        var timeEL = $(this).parent().attr("id");
+
+        localStorage.setItem(timeEl, textEL);
+    })
+
+    $("#hour9 .description").val(localStorage.getItem("hour9"));
+    $("#hour10 .description").val(localStorage.getItem("hour10"));
+    $("#hour11 .description").val(localStorage.getItem("hour11"));
+    $("#hour12 .description").val(localStorage.getItem("hour12"));
+    $("#hour13 .description").val(localStorage.getItem("hour13"));
+    $("#hour14 .description").val(localStorage.getItem("hour14"));
+    $("#hour15 .description").val(localStorage.getItem("hour15"));
+    $("#hour16 .description").val(localStorage.getItem("hour16"));
+    $("#hour17 .description").val(localStorage.getItem("hour17"));
+
+    });
+    
+    </script>
   </body>
 </html>
